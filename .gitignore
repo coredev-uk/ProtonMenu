@@ -39,3 +39,6 @@ luac.out
 *.x86_64
 *.hex
 
+resources
+steal
+.vscode/settings.json
