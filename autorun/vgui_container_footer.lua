@@ -3,7 +3,7 @@ local PANEL = {}
 AccessorFunc(PANEL, "p_version", "Version")
 
 function PANEL:Init()
-    self:SetVersion("placeholder")
+    self:SetVersion(PROTON.menu.version)
 end
 
 function PANEL:Paint(w, h)
