@@ -3,6 +3,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 PROTON = {
+	cmds = {},
 	menu = {
 		version = "0.5.0"
 	},
@@ -175,14 +176,14 @@ PROTON = {
 	}
 }
 
--- if file.Exists("PROTON.json", "DATA") then
--- 	PROTON = util.JSONToTable(file.Read("PROTON.json", "DATA"))
--- else
--- 	file.Write("PROTON.json", util.TableToJSON(PROTON), true)
--- end
+if file.Exists("PROTON.json", "DATA") then
+	PROTON = util.JSONToTable(file.Read("PROTON.json", "DATA"))
+else
+	file.Write("PROTON.json", util.TableToJSON(PROTON), true)
+end
 
--- for k, v in pairs(PROTON.exploits) do
--- 	concommand.Add("proton_" .. k, function(ply, cmd, args)
--- 		v(cmd, args)
--- 	end)
--- end
+concommand.Add("proton", function(ply, cmd, args)
+	for k, v in pairs(PROTON.exploits) do
+		v(cmd, args)
+	end
+end)

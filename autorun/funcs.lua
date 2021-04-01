@@ -99,3 +99,10 @@ function PROTON.GetUserGroup(ply)
         return ply:GetUserGroup()
     end
 end
+
+--[[-----------------------------------------------------
+AddCommand
+-------------------------------------------------------]]
+function PROTON:AddCommand(cmd, args)
+    table.insert(PROTON.cmds, cmd, args)
+end
