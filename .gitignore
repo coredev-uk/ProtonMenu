@@ -42,3 +42,4 @@ luac.out
 resources
 steal
 .vscode/settings.json
+.DS_Store
