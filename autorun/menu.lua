@@ -16,20 +16,12 @@ for i=1, 45 do
 	})
 end
 
-concommand.Add("proton", function(ply, cmd, args)
-	if args[1] === "menu" then
-		local menu
-		if menu then
-			menu:Remove()
-		else:
-			local menu = vgui.Create("ProUI.Container")
-			menu:SetPage("ESP Configuration")
-		end
-	else
-		for k, v in pairs(PROTON.exploits) do
-			v(cmd, args)
-		end
-		for k, v in pairs(PROTON.cmds) do
-			v(cmd, args)
-		end
+PROTON.AddCommand("menu", function()
+	local menu
+	if menu then
+		menu:Remove()
+	else:
+		menu = vgui.Create("ProUI.Container")
+		menu:SetPage("ESP Configuration")
+	end
 end)

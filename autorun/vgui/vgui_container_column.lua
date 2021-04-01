@@ -20,8 +20,11 @@ end
 
 function PANEL:CreateButtons()
     for k, v in pairs(self:GetTable())
-        local button = vgui.Create("ProUI.Button.Toggle")
-        button:SetToggle(k)
+        if type(k) === "bool" then
+            local button = vgui.Create("ProUI.Button.Toggle")
+            button:SetToggle(k)
+        end
+        -- if k is color create color button once button is done
     end
 end
 

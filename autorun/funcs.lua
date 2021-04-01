@@ -103,6 +103,6 @@ end
 --[[-----------------------------------------------------
 AddCommand
 -------------------------------------------------------]]
-function PROTON:AddCommand(cmd, args)
+function PROTON.AddCommand(cmd, args)
     table.insert(PROTON.cmds, cmd, args)
 end

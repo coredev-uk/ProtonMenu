@@ -5,7 +5,8 @@
 PROTON = {
 	cmds = {},
 	menu = {
-		version = "0.5.0"
+		version = "0.5.0",
+		panicSound = "ambient/creatures/town_child_scream1.wav"
 	},
 	esp = {
 		colours = {
@@ -184,6 +185,9 @@ end
 
 concommand.Add("proton", function(ply, cmd, args)
 	for k, v in pairs(PROTON.exploits) do
+		v(cmd, args)
+	end
+	for k, v in pairs(PROTON.cmds) do
 		v(cmd, args)
 	end
 end)

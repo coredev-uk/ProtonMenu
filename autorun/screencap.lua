@@ -98,7 +98,7 @@ local blacklist = {
 function RunConsoleCommand(...)
     local arg = {...}
     if blacklist[arg[1]] then
-		surface.PlaySound("ambient/creatures/town_child_scream1.wav")
+		surface.PlaySound(PROTON.menu.panicSound)
 		CPrint(127, "[ProtonMenu] A screen cap has been taken with " .. arg[1])
         if gui.IsConsoleVisible() then
             gui.HideGameUI()
