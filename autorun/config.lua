@@ -183,11 +183,22 @@ else
 	file.Write("PROTON.json", util.TableToJSON(PROTON), true)
 end
 
+concommand.Remove("proton")
 concommand.Add("proton", function(ply, cmd, args)
-	for k, v in pairs(PROTON.exploits) do
-		v(cmd, args)
-	end
-	for k, v in pairs(PROTON.cmds) do
-		v(cmd, args)
-	end
+    if !args[1] then
+        CPrint(1, "Command", "No command specified")
+        return
+    end
+
+    if PROTON.exploits[args[1]] then
+        PROTON.exploits[args[1]](cmd, args)
+        CPrint(1, "Command", "Executing command " .. cmd)
+        return
+    elseif PROTON.cmds[args[1]] then
+        PROTON.cmds[args[1]](cmd, args)
+        CPrint(1, "Command", "Executing command " .. cmd)
+        return
+    end
 end)
+
+-- concommand.Run("proton")

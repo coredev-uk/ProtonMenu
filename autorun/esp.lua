@@ -140,7 +140,20 @@ local function DrawStaff()
 	end
 end
 
-hook.Add("PreDrawEffects", "DrawEntities", DrawEntities)
-hook.Add("HUDPaint", "DrawPlayers", DrawPlayers)
-hook.Add("PreDrawEffects", "DrawEyeTrace", DrawEyeTrace)
-hook.Add("HUDPaint", "DrawStaff", DrawStaff)
+
+local function addHook(name, func)
+    if (hook.GetTable()[name]) then
+        hook.Remove(name, "PROTON_" .. name)
+    end
+    hook.Add(name, "PROTON_" .. name, func)
+end
+
+addHook("HUDPaint", function()
+    DrawPlayers()
+    -- DrawStaff()    
+end)
+
+addHook("PreDrawEffects", function()
+    DrawEntities()
+    DrawEyeTrace()
+end)
